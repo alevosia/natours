@@ -48,10 +48,6 @@
 		@include absoluteCenter;
 		list-style: none;
 		text-align: center;
-
-		visibility: hidden;
-		opacity: 0;
-		width: 0;
 	}
 
 	&__item {
@@ -96,12 +92,6 @@
 	}
 
 	&__checkbox:checked ~ &__nav {
-		visibility: visible;
-		opacity: 1;
-		width: 100%;
-	}
-
-	&__checkbox:checked ~ &__nav + &__list {
 		visibility: visible;
 		opacity: 1;
 		width: 100%;
