@@ -5,8 +5,8 @@
 	"main": "index.html",
 	"scripts": {
 		"start": "npm-run-all --parallel devServer watch:sass",
-		"build": "npm-run-all compile:sass concat:css prefix:css minify:css build2",
-		"build2": "npm-run-all create:fonts copy:fonts create:images copy:images copy:index delete:css",
+		"build": "npm-run-all compile:sass concat:css prefix:css minify:css create:fonts copy:fonts build2",
+		"build2": "npm-run-all create:images copy:images copy:index create:js copy:js delete:css",
 		"devServer": "live-server",
 		"watch:sass": "node-sass sass/main.scss css/style.css -w",
 		"compile:sass": "node-sass sass/main.scss css/style.comp.css",
@@ -17,6 +17,8 @@
 		"copy:fonts": "cp fonts/fonts/* build/fonts",
 		"create:images": "mkdirp build/img",
 		"copy:images": "cp img/* build/img",
+		"create:js": "mkdirp build/js",
+		"copy:js": "cp js/* build/js",
 		"copy:index": "cp index.html build",
 		"delete:css": "rm -r css"
 	},
