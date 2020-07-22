@@ -13,6 +13,7 @@
 		width: 100%;
 		font-size: 2rem;
 		transition: all 0.8s ease;
+		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
 		border-radius: 5px;
 		overflow: hidden;
