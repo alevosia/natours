@@ -7,9 +7,8 @@
 	box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 	transition: all 0.3s;
 
-	&:hover {
-		transform: scale(1.03) translateY(-1.5rem);
-		box-shadow: 0 2rem 3rem rgba($color-black, 0.25);
+	@include respond(tablet-portrait) {
+		padding: 2rem;
 	}
 
 	&__icon {
@@ -20,5 +19,14 @@
 		-webkit-background-clip: text;
 		background-clip: text;
 		color: transparent;
+
+		@include respond(tablet-portrait) {
+			margin-bottom: 0;
+		}
+	}
+
+	&:hover {
+		transform: scale(1.03) translateY(-1.5rem);
+		box-shadow: 0 2rem 3rem rgba($color-black, 0.25);
 	}
 }
