@@ -4,8 +4,21 @@
 	"description": "",
 	"main": "index.html",
 	"scripts": {
-		"dev": "node-sass sass/main.scss css/style.css -w",
-		"build": "node-sass sass/main.scss css/style.css"
+		"start": "npm-run-all --parallel devServer watch:sass",
+		"build": "npm-run-all compile:sass concat:css prefix:css minify:css build2",
+		"build2": "npm-run-all create:fonts copy:fonts create:images copy:images copy:index delete:css",
+		"devServer": "live-server",
+		"watch:sass": "node-sass sass/main.scss css/style.css -w",
+		"compile:sass": "node-sass sass/main.scss css/style.comp.css",
+		"concat:css": "concat -o css/style.concat.css fonts/icon-font.css css/style.comp.css",
+		"prefix:css": "postcss css/style.concat.css --use autoprefixer -o css/style.prefix.css",
+		"minify:css": "node-sass css/style.prefix.css build/css/style.css --output-style compressed",
+		"create:fonts": "mkdirp build/fonts",
+		"copy:fonts": "cp fonts/fonts/* build/fonts",
+		"create:images": "mkdirp build/img",
+		"copy:images": "cp img/* build/img",
+		"copy:index": "cp index.html build",
+		"delete:css": "rm -r css"
 	},
 	"repository": {
 		"type": "git",
@@ -18,6 +31,15 @@
 	},
 	"homepage": "https://github.com/alevosia/natours#readme",
 	"devDependencies": {
-		"node-sass": "^4.14.1"
-	}
+		"autoprefixer": "^9.8.5",
+		"concat": "^1.0.3",
+		"live-server": "^1.2.1",
+		"mkdirp": "^1.0.4",
+		"node-sass": "^4.14.1",
+		"npm-run-all": "^4.1.5",
+		"postcss-cli": "^7.1.1"
+	},
+	"browserslist": [
+		"defaults"
+	]
 }
